@@ -1,0 +1,46 @@
+transaction_id,customer_id,date,merchant,category,amount,type
+T001,CUST001,2026-03-01,TechNova Payroll,Income,5200.00,credit
+T002,CUST001,2026-03-02,City Rent,Rent,1450.00,debit
+T003,CUST001,2026-03-03,GreenBasket Groceries,Groceries,126.30,debit
+T004,CUST001,2026-03-05,RideWave,Transport,28.40,debit
+T005,CUST001,2026-03-06,BeanHub Coffee,Dining,18.20,debit
+T006,CUST001,2026-03-08,StreamBox,Subscriptions,15.99,debit
+T007,CUST001,2026-03-10,UrbanEats,Dining,64.10,debit
+T008,CUST001,2026-03-12,PharmaPlus,Healthcare,42.75,debit
+T009,CUST001,2026-03-15,GreenBasket Groceries,Groceries,151.60,debit
+T010,CUST001,2026-03-17,StyleMart,Shopping,93.45,debit
+T011,CUST001,2026-03-21,QuickFix Utilities,Utilities,185.00,debit
+T012,CUST001,2026-03-25,UrbanEats,Dining,38.90,debit
+T013,CUST001,2026-03-29,RideWave,Transport,35.20,debit
+T014,CUST001,2026-04-01,TechNova Payroll,Income,5200.00,credit
+T015,CUST001,2026-04-02,City Rent,Rent,1450.00,debit
+T016,CUST001,2026-04-03,GreenBasket Groceries,Groceries,174.80,debit
+T017,CUST001,2026-04-04,UrbanEats,Dining,82.40,debit
+T018,CUST001,2026-04-05,RideWave,Transport,41.50,debit
+T019,CUST001,2026-04-06,BeanHub Coffee,Dining,24.75,debit
+T020,CUST001,2026-04-08,StreamBox,Subscriptions,15.99,debit
+T021,CUST001,2026-04-09,FitLife Gym,Subscriptions,59.00,debit
+T022,CUST001,2026-04-11,StyleMart,Shopping,318.70,debit
+T023,CUST001,2026-04-12,UrbanEats,Dining,96.20,debit
+T024,CUST001,2026-04-14,GreenBasket Groceries,Groceries,213.10,debit
+T025,CUST001,2026-04-15,FlightPlus,Travel,620.00,debit
+T026,CUST001,2026-04-18,QuickFix Utilities,Utilities,221.50,debit
+T027,CUST001,2026-04-20,GameForge,Entertainment,89.99,debit
+T028,CUST001,2026-04-21,RideWave,Transport,62.30,debit
+T029,CUST001,2026-04-24,UrbanEats,Dining,104.35,debit
+T030,CUST001,2026-04-27,GreenBasket Groceries,Groceries,168.20,debit
+T031,CUST001,2026-04-29,ElectroWorld,Shopping,780.00,debit
+T032,CUST001,2026-05-01,TechNova Payroll,Income,5200.00,credit
+T033,CUST001,2026-05-02,City Rent,Rent,1450.00,debit
+T034,CUST001,2026-05-03,GreenBasket Groceries,Groceries,162.30,debit
+T035,CUST001,2026-05-04,UrbanEats,Dining,72.00,debit
+T036,CUST001,2026-05-05,RideWave,Transport,39.40,debit
+T037,CUST001,2026-05-07,StreamBox,Subscriptions,15.99,debit
+T038,CUST001,2026-05-09,StyleMart,Shopping,112.20,debit
+T039,CUST001,2026-05-10,QuickFix Utilities,Utilities,190.00,debit
+T040,CUST001,2026-05-12,UrbanEats,Dining,68.50,debit
+T041,CUST001,2026-05-13,MediCare Clinic,Healthcare,135.00,debit
+T042,CUST001,2026-05-14,GreenBasket Groceries,Groceries,189.90,debit
+T043,CUST001,2026-05-15,Bonus Deposit,Income,500.00,credit
+T044,CUST001,2026-05-16,TravelNest Hotel,Travel,410.00,debit
+T045,CUST001,2026-05-18,UrbanEats,Dining,94.10,debit
