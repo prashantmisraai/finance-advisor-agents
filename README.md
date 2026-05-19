@@ -1,8 +1,50 @@
 # Personal Finance Advisor Agent
 
-A lightweight multi-agent simulation for helping customers understand and improve their financial health. It uses mock transaction data, a command-line interface, basic memory, tool/function calling, and planner-led orchestration.
+A lightweight multi-agent system for helping customers understand and improve their financial health. It uses mock transaction data, a command-line interface, basic memory, tool/function calling, LangGraph orchestration, LangChain LLM integration, and Groq API for natural-language planning/recommendation/final response generation.
 
-The demo runs with standard Python. `requirements.txt` lists optional LangChain/LangGraph/CrewAI dependencies for extending the same architecture into framework-native agents.
+Financial calculations remain deterministic Python tools so totals, category spend, baselines, and alerts are explainable.
+
+## Frameworks Used
+
+- **LangGraph**: graph/state-machine orchestration across planner, spending, recommendation, alert, and synthesis nodes.
+- **LangChain**: LLM wrapper through `langchain-groq`.
+- **Groq API**: configured as the LLM provider using `GROQ_API_KEY`.
+- **Python tools**: deterministic transaction analysis functions.
+
+CrewAI is not required because LangGraph is the chosen orchestration framework for this implementation.
+
+## Setup
+
+Install dependencies:
+
+```powershell
+pip install -r requirements.txt
+```
+
+Set your Groq API key:
+
+```powershell
+$env:GROQ_API_KEY="your_groq_api_key"
+```
+
+Optional model override:
+
+```powershell
+$env:GROQ_MODEL="llama-3.3-70b-versatile"
+```
+
+If `GROQ_API_KEY` or framework dependencies are missing, the project still runs with a local fallback so the demo does not break. With dependencies and key present, trace output shows:
+
+```text
+Runtime: LangGraph
+LLM provider: groq_via_langchain
+```
+
+Check Groq readiness:
+
+```powershell
+python check_groq.py
+```
 
 ## Run
 
@@ -32,7 +74,8 @@ If PowerShell script execution is blocked, use the batch launchers:
 ```mermaid
 flowchart TD
     User["User query"] --> Planner["Planner Agent"]
-    Planner --> State["Shared AgentState + JSON memory"]
+    Planner --> Graph["LangGraph StateGraph"]
+    Graph --> State["Shared AgentState + JSON memory"]
     State --> Spending["Spending Analysis Agent - deep implementation"]
     Spending --> Recommendation["Recommendation Agent"]
     Spending --> Alert["Alert Agent"]
@@ -47,7 +90,7 @@ Location: `finance_advisor/agents/planner.py`
 
 Responsibilities:
 
-- Understands user intent with lightweight routing logic.
+- Understands user intent using Groq API when configured, with keyword fallback for offline demos.
 - Decides which agents should be invoked.
 - Maintains execution order.
 - Combines agent outputs into the final answer.
@@ -108,16 +151,16 @@ Generates proactive financial alerts from spending analysis output:
 
 Location: `finance_advisor/orchestrator.py`
 
-The orchestrator behaves like a small LangGraph-style execution graph:
+The orchestrator builds a real LangGraph `StateGraph` when `langgraph` is installed:
 
 1. Create shared `AgentState`.
 2. Load customer memory from `.advisor_memory.json`.
 3. Ask planner for a route.
-4. Execute agents in route order.
+4. Move through LangGraph nodes in route order.
 5. Store spending insights and recent run summary in memory.
-6. Ask planner to synthesize a single customer-facing answer.
+6. Ask the Groq-backed planner synthesis to produce a single customer-facing answer.
 
-`AgentState` is the coordination object passed between agents. This mirrors how LangGraph state would move through graph nodes.
+`AgentState` is the coordination object passed between graph nodes.
 
 ## Memory Handling
 
@@ -139,15 +182,15 @@ The dataset includes three months of transactions for `CUST001`, including incom
 
 ## Framework Fit
 
-This implementation is framework-ready:
+This implementation is framework-backed:
 
-- Planner route = graph router.
-- Each agent class = graph node or CrewAI agent task.
-- `AgentState` = LangGraph state schema.
-- Tool functions in `finance_advisor/tools.py` = LangChain tools.
+- Planner route = LangGraph conditional routing.
+- Each agent class = graph node.
+- `AgentState` = shared graph state.
+- Tool functions in `finance_advisor/tools.py` = deterministic financial tools that can be wrapped as LangChain tools.
 - CLI = lightweight user interface for demo interaction.
 
-The current version avoids mandatory external dependencies so evaluators can run it immediately.
+The current version also includes fallback behavior so evaluators can run it even before configuring an API key.
 
 ## Conversational CLI
 

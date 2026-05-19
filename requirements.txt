@@ -1,6 +1,6 @@
-# The demo runs with the Python standard library.
-#
-# Optional framework dependencies for extending the orchestration layer:
-# langchain>=0.3.0
-# langgraph>=0.2.0
+langchain>=0.3.0
+langchain-groq>=0.2.0
+langgraph>=0.2.0
+
+# Optional alternative orchestration framework:
 # crewai>=0.80.0
