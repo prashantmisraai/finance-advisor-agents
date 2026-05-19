@@ -69,6 +69,11 @@ If PowerShell script execution is blocked, use the batch launchers:
 .\run_chat.bat
 ```
 
+## Demo Artifacts
+
+- [DEMO_GUIDE.md](DEMO_GUIDE.md): speaking guide and architecture explanation.
+- [DEMO_OUTPUT.md](DEMO_OUTPUT.md): sample successful run showing LangGraph and Groq API.
+
 ## Agent Architecture
 
 ```mermaid
